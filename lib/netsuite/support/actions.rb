@@ -22,6 +22,8 @@ module NetSuite
             self.send(:include, NetSuite::Actions::AttachFile::Support)
           when :get
             self.send(:include, NetSuite::Actions::Get::Support)
+          when :get_rest
+            self.send(:include, NetSuite::Actions::Rest::Get::Support)
           when :get_all
             self.send(:include, NetSuite::Actions::GetAll::Support)
           when :get_deleted

@@ -67,6 +67,11 @@ module NetSuite
     autoload :UpsertList,       'netsuite/actions/upsert_list'
     autoload :Search,           'netsuite/actions/search'
     autoload :Login,            'netsuite/actions/login'
+
+    module Rest
+      autoload :AbstractAction, 'netsuite/actions/rest/abstract_action'
+      autoload :Get,            'netsuite/actions/rest/get'
+    end
   end
 
   module Records
