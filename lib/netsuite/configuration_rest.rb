@@ -17,13 +17,13 @@ module NetSuite
     end
 
     def connection(params={}, credentials={})
-      client = Http.client.new(**http_params(params, credentials)).auth(auth_header(credentials))
+      client = HTTP::Client.new(**http_params(params, credentials)).auth(auth_header(credentials))
     end
 
     def http_params(params={}, credentials={})
       full_params = {
-        base_uri: endpoint
-        timeout_options: {read: read_timeout, },
+        base_uri: endpoint,
+        timeout_options: {read: read_timeout },
         keep_alive_timeout: open_timeout,
         proxy: proxy,
       }

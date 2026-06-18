@@ -1,6 +1,7 @@
 require 'set'
 
 require 'savon'
+require 'http'
 require 'netsuite/version'
 require 'netsuite/errors'
 require 'netsuite/utilities'

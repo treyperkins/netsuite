@@ -33,8 +33,8 @@ module NetSuite
           "oauth_signature_method" => "HMAC-SHA256",
           "oauth_timestamp" => timestamp,
           "oauth_nonce" => nonce,
-          "oauth_version" => "1.0"
-          "oauth_signature" => signature
+          "oauth_version" => "1.0",
+          "oauth_signature" => signature,
         }
       end
 
