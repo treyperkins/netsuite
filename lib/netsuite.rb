@@ -11,6 +11,7 @@ require 'netsuite/rest/utilities/request'
 
 module NetSuite
   autoload :Configuration, 'netsuite/configuration'
+  autoload :ConfigurationRest, 'netsuite/configuration_rest'
   autoload :Response,      'netsuite/response'
 
   module Namespaces
