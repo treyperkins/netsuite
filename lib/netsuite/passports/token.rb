@@ -25,6 +25,19 @@ module NetSuite
         }
       end
 
+      def header
+        {
+          "Oauth_realm" => account,
+          "oauth_consumer_key" => consumer_key,
+          "oauth_token" => token_id,
+          "oauth_signature_method" => "HMAC-SHA256",
+          "oauth_timestamp" => timestamp,
+          "oauth_nonce" => nonce,
+          "oauth_version" => "1.0"
+          "oauth_signature" => signature
+        }
+      end
+
       private
 
       def signature
