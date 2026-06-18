@@ -23,7 +23,7 @@ module NetSuite
     def http_params(params={}, credentials={})
       full_params = {
         base_uri: endpoint,
-        timeout_options: {read: read_timeout },
+        timeout_options: {read_timeout: read_timeout },
         keep_alive_timeout: open_timeout,
         proxy: proxy,
       }
@@ -50,6 +50,23 @@ module NetSuite
       attributes[:filters] = list
     end
 
+    def rest_domain(rest_domain = nil)
+      if rest_domain
+        self.rest_domain = rest_domain
+      else
+        # if sandbox, this parameter is ignored
+        if sandbox
+          'webservices.sandbox.netsuite.com'
+        else
+          attributes[:rest_domain] ||= 'webservices.netsuite.com'
+        end
+      end
+    end
+
+    def rest_domain=(rest_domain)
+      attributes[:rest_domain] = rest_domain
+    end
+
     def api_version(version = nil)
       if version
         self.api_version = version
@@ -59,11 +76,6 @@ module NetSuite
     end
 
     def api_version=(version)
-      if attributes[:api_version] != version
-        attributes[:wsdl] = nil
-        attributes[:wsdl_domain] = nil
-      end
-
       attributes[:api_version] = version
     end
 
