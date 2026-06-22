@@ -16,8 +16,8 @@ module NetSuite
       end
     end
 
-    def connection(params={}, credentials={})
-      client = HTTP::Client.new(**http_params(params, credentials)).auth(auth_header(credentials))
+    def connection(uri, params={}, credentials={})
+      client = HTTP::Client.new(**http_params(params, credentials))
     end
 
     def http_params(params={}, credentials={})
@@ -105,20 +105,6 @@ module NetSuite
 
     def sandbox?
       !!sandbox
-    end
-
-    def auth_header(credentials={})
-      token_auth(credentials)
-    end
-
-    def token_auth(credentials)
-      NetSuite::Passports::Token.new(
-        credentials[:account] || account,
-        credentials[:consumer_key] || consumer_key,
-        credentials[:consumer_secret] || consumer_secret,
-        credentials[:token_id] || token_id,
-        credentials[:token_secret] || token_secret
-      ).header
     end
 
     def role=(role)

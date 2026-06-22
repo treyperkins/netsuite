@@ -25,20 +25,6 @@ module NetSuite
         }
       end
 
-      def header
-        parts = {
-          "realm" => URI.encode_uri_component(account),
-          "oauth_consumer_key" => URI.encode_uri_component(consumer_key),
-          "oauth_token" => URI.encode_uri_component(token_id),
-          "oauth_signature_method" => URI.encode_uri_component("HMAC-SHA256"),
-          "oauth_timestamp" => URI.encode_uri_component(timestamp),
-          "oauth_nonce" => URI.encode_uri_component(nonce),
-          "oauth_version" => URI.encode_uri_component("1.0"),
-          "oauth_signature" => URI.encode_uri_component(signature),
-        }
-        "OAuth " + parts.map { |k, v| "#{k}=\"#{v}\"" }.join(", ")
-      end
-
       private
 
       def signature
