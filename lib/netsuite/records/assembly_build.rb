@@ -7,7 +7,7 @@ module NetSuite
       include Support::Records
       include Namespaces::TranInvt
 
-      actions :get_rest, :add, :initialize, :delete, :update, :upsert, :upsert_list,
+      actions :get_rest, :add, :initialize, :delete, :delete_list_rest,:update, :upsert, :upsert_list,
         :search
 
       fields :bin_numbers, :buildable, :created_date, :expiration_date,
