@@ -70,6 +70,7 @@ module NetSuite
 
     module Rest
       autoload :AbstractAction, 'netsuite/actions/rest/abstract_action'
+      autoload :DeleteList,      'netsuite/actions/rest/delete_list'
       autoload :Get,            'netsuite/actions/rest/get'
     end
   end
