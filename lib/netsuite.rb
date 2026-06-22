@@ -341,7 +341,6 @@ module NetSuite
 
   def self.configure(&block)
     NetSuite::Configuration.instance_eval(&block)
-    NetSuite::ConfigurationRest.instance_eval(&block)
   end
 
   def self.configure_rest(&block)
