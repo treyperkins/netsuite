@@ -11,53 +11,20 @@ module NetSuite
 
         private
 
-        # <soap:Body>
-        #   <platformMsgs:deleteList>
-        #     <platformMsgs:baseRef internalId="1" type="customer" xsi:type="platformCore:RecordRef"/>
-        #     <platformMsgs:baseRef internalId="2" type="customer" xsi:type="platformCore:RecordRef"/>
-        #   </platformMsgs:deleteList>
-        # </soap:Body>
         def request_body
-          # list = @options.is_a?(Hash) ? @options[:list] : @options
-
-          # formatted_list = if @options[:type_id]
-          #   type_id = @options[:type_id]
-          #   record_type = 'platformCore:CustomRecordRef'
-
-          #   list.map do |internal_id|
-          #     {
-          #       '@internalId' => internal_id,
-          #       '@typeId' => type_id,
-          #       '@xsi:type' => record_type
-          #     }
-          #   end
-          # else
-          #   type = NetSuite::Support::Records.netsuite_type(@klass)
-          #   record_type = 'platformCore:RecordRef'
-
-          #   list.map do |internal_id|
-          #     {
-          #       '@internalId' => internal_id,
-          #       '@type' => type,
-          #       '@xsi:type' => record_type
-          #     }
-          #   end
-          # end
-
-          # {
-          #   baseRef: formatted_list
-          # }
           nil
         end
 
-        def response_list
-          [@response.headers['Location']]
+        # get the location of the background processing request from the response header, which can be used to check the status of the request and retrieve any errors
+        def response_location
+          @response.headers['Location']
         end
 
         def success?
           @success ||= response_errors.blank?
         end
 
+        # This has NOT been adapted to the new REST API response format, and is currently non-functional. It needs to be reimplemented to return a hash of internal_id => [errors]
         def response_errors
           if response_list.any? { |r| r[:status][:@is_success] == 'false' }
             @response_errors ||= errors
@@ -107,7 +74,7 @@ module NetSuite
         end
 
         def response_body
-          @response_body ||= response_list
+          @response_body ||= response_location
         end
 
         module Support
