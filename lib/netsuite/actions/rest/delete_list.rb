@@ -39,6 +39,12 @@ module NetSuite
           }
         end
 
+        def request_params
+          {
+            ids: id_list
+          }
+        end
+
         def id_list
           list = @options.is_a?(Hash) ? @options[:list] : @options
 
@@ -48,7 +54,7 @@ module NetSuite
         end
 
         def request_uri
-          "record/v1/#{NetSuite::Support::Records.netsuite_type(@klass)}?ids=#{id_list.join(',')}"
+          "record/v1/#{NetSuite::Support::Records.netsuite_type(@klass)}"
         end
 
         def action_name
