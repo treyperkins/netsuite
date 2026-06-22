@@ -48,7 +48,7 @@ module NetSuite
         end
 
         def request_uri
-          "#{NetSuite::Support::Records.netsuite_type(@klass)}?ids=#{id_list.join(',')}"
+          "record/v1/#{NetSuite::Support::Records.netsuite_type(@klass)}?ids=#{id_list.join(',')}"
         end
 
         def action_name

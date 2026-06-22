@@ -34,7 +34,7 @@ module NetSuite
         end
 
         def request_uri
-          "#{NetSuite::Support::Records.netsuite_type(@klass)}/#{@options[:internal_id]}"
+          "record/v1/#{NetSuite::Support::Records.netsuite_type(@klass)}/#{@options[:internal_id]}"
         end
 
         def action_name
