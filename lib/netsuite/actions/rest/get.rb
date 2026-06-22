@@ -41,6 +41,10 @@ module NetSuite
           :get
         end
 
+        def http_verb
+          :get
+        end
+
         module Support
 
           def self.included(base)
