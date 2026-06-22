@@ -25,6 +25,7 @@ module NetSuite
         end
 
         def response_hash
+          puts @response.body.inspect
           @response_hash = @response.body[:get_response][:read_response]
         end
 
