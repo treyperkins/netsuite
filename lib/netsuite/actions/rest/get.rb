@@ -25,7 +25,7 @@ module NetSuite
         end
 
         def response_hash
-          @response_hash = @response.body[:get_response][:read_response]
+          @response_hash = JSON.parse(@response.body, symbolize_names: true)[:get_response][:read_response]
         end
 
         def request_uri
