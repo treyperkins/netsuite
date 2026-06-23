@@ -22,6 +22,8 @@ module NetSuite
             self.send(:include, NetSuite::Actions::AttachFile::Support)
           when :get
             self.send(:include, NetSuite::Actions::Get::Support)
+          when :get_rest
+            self.send(:include, NetSuite::Actions::Rest::Get::Support)
           when :get_all
             self.send(:include, NetSuite::Actions::GetAll::Support)
           when :get_deleted
@@ -42,6 +44,8 @@ module NetSuite
             self.send(:include, NetSuite::Actions::Delete::Support)
           when :delete_list
             self.send(:include, NetSuite::Actions::DeleteList::Support)
+          when :delete_list_rest
+            self.send(:include, NetSuite::Actions::Rest::DeleteList::Support)
           when :update
             self.send(:include, NetSuite::Actions::Update::Support)
           when :update_list

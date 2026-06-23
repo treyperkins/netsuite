@@ -21,6 +21,8 @@ Gem::Specification.new do |gem|
   gem.metadata['rubygems_mfa_required'] = 'true'
 
   gem.add_dependency 'savon', '>= 2.3.0', '!= 2.13.0'
+  gem.add_dependency 'http', '~> 6.0'
+  gem.add_dependency 'simple_oauth'
 
   gem.add_development_dependency 'rspec', '~> 3.13.0'
   gem.add_development_dependency 'rake', '~> 12.3.3'

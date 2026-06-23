@@ -1,6 +1,7 @@
 require 'set'
 
 require 'savon'
+require 'http'
 require 'netsuite/version'
 require 'netsuite/errors'
 require 'netsuite/utilities'
@@ -11,6 +12,7 @@ require 'netsuite/rest/utilities/request'
 
 module NetSuite
   autoload :Configuration, 'netsuite/configuration'
+  autoload :ConfigurationRest, 'netsuite/configuration_rest'
   autoload :Response,      'netsuite/response'
 
   module Namespaces
@@ -65,6 +67,12 @@ module NetSuite
     autoload :UpsertList,       'netsuite/actions/upsert_list'
     autoload :Search,           'netsuite/actions/search'
     autoload :Login,            'netsuite/actions/login'
+
+    module Rest
+      autoload :AbstractAction, 'netsuite/actions/rest/abstract_action'
+      autoload :DeleteList,      'netsuite/actions/rest/delete_list'
+      autoload :Get,            'netsuite/actions/rest/get'
+    end
   end
 
   module Records
@@ -333,6 +341,10 @@ module NetSuite
 
   def self.configure(&block)
     NetSuite::Configuration.instance_eval(&block)
+  end
+
+  def self.configure_rest(&block)
+    NetSuite::ConfigurationRest.instance_eval(&block)
   end
 
 end
